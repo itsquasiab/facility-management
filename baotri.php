@@ -14,9 +14,8 @@
   <?php include 'assets/components/navbar.php'?>
 
   <div class="p-1">
-    <header class="flex justify-between">
-      <h1 class="text-3xl font-semibold">Lịch sử bảo trì</h1>
-    </header>
+    <h1 class="text-3xl font-semibold">Lịch sử bảo trì</h1>
+    
     <div class="my-container p-1 my-1" id="table-thietbi"></div>
   </div>
 

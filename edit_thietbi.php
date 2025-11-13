@@ -1,5 +1,5 @@
 <?php
-require_once "assets/php/connect.php";
+require_once "assets/php/config.php";
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($id <= 0) die("ID không hợp lệ");
@@ -200,8 +200,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </label>
 
       <div class="flex gap-0.5">
-        <button class="my-button" type="submit">Lưu</button>
-        <a class="my-button" href="thietbi.php">Quay lại</a>
+        <button type="submit">Lưu</button>
+        <a class="button" href="thietbi.php">Quay lại</a>
       </div>
     </form>
   </div>

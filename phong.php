@@ -1,5 +1,5 @@
 <?php
-require_once "assets/php/connect.php";
+require_once "assets/php/config.php";
 
 // ====== XỬ LÝ AJAX ======
 
@@ -88,9 +88,7 @@ while ($row = $res->fetch_assoc()) $nhanvienOptions[] = $row;
   <?php include 'assets/components/navbar.php'?>
 
   <div class="p-1">
-    <header class="flex justify-between">
-      <h1 class="text-3xl font-semibold">Danh sách các Phòng (có thiết bị)</h1>
-    </header>
+    <h1 class="text-3xl font-semibold">Danh sách các phòng (có thiết bị)</h1>
 
     <section class="my-container p-1 my-1">
       <h2 class="text-2xl font-medium">Bộ lọc</h2>
@@ -121,8 +119,10 @@ while ($row = $res->fetch_assoc()) $nhanvienOptions[] = $row;
       </label>
     </section>
 
-    <div class="my-container p-1 my-1">
+    <div class="my-container table-container">
+      <div class="p-1">
       <p id="count-phong" class="text-lg font-medium">Đang hiển thị: 0 phòng</p>
+      </div>
       <table id="table-phong">
         <thead>
           <tr>

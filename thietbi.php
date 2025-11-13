@@ -1,5 +1,5 @@
 <?php
-require_once "assets/php/connect.php";
+require_once "assets/php/config.php";
 
 // ====== API GET DATA ======
 if (isset($_GET['action']) && $_GET['action'] === "getData") {
@@ -90,14 +90,14 @@ $nhanVienURL  = $_GET['nhan_vien'] ?? '';
   <?php include 'assets/components/navbar.php'?>
 
   <div class="p-1">
-    <header class="flex justify-between">
-      <h1 class="text-3xl font-semibold">Danh sách các Thiết bị hiện có trong trường</h1>
-    </header>
+    <h1 class="text-3xl font-semibold">Danh sách các thiết bị</h1>
 
     <?php include 'assets/php/filter_thietbi.php'?>
 
-    <div class="my-container p-1">
+    <div class="my-container table-container">
+      <div class="p-1">
       <p id="count-thietbi" class="text-lg font-medium">Đang hiển thị: 0 thiết bị</p>
+      </div>
       <table id="table-thietbi">
         <thead>
           <tr>

@@ -1,5 +1,5 @@
 <?php
-require_once "assets/php/connect.php";
+require_once "assets/php/config.php";
 
 // ========== AJAX update gán nhân viên quản lý phòng ==========
 if (isset($_POST['action']) && $_POST['action'] === "assignRoom") {
@@ -81,8 +81,10 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
   <div class="p-1">
     <h1 class="text-3xl font-semibold">Quản lý nhân viên</h1>
 
-    <section class="my-container p-1 my-1">
+    <div class="my-container table-container my-1">
+      <div class="p-1">
       <h2 class="text-2xl font-medium">Nhân viên đã phân công</h2>
+      </div>
       <table id="table-assigned">
         <thead>
           <tr>
@@ -97,10 +99,12 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
         </thead>
         <tbody></tbody>
       </table>
-    </section>
+    </div>
 
-    <section class="my-container p-1 my-1">
+    <div class="my-container table-container my-1">
+      <div class="p-1">
       <h2 class="text-2xl font-medium">Nhân viên chưa phân công</h2>
+      </div>
       <table id="table-unassigned">
         <thead>
           <tr>
@@ -114,7 +118,7 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
         </thead>
         <tbody></tbody>
       </table>
-    </section>
+    </div>
   </div>
 
   <script>

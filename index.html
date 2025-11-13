@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phần mềm quản lý cơ sở vật chất</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="navbar-glass"></div>
+    <div class="navbar-glass-edge"></div>
+    <nav class="mx-1 flex justify-between">
+      <a href="index.html">SFMS</a>
+      <a href="thietbi.php">Thiết bị</a>
+      <a href="phong.php">Phòng</a>
+      <a href="nhanvien.php">Nhân viên</a>
+      <a href="baotri.php">Bảo trì</a>
+      <a href="lichsu.php">Lịch sử</a>
+      <a href="#" class="btn">Đăng nhập</a>
+    </nav>
+  </header>
+
+  <div class="p-1">
+
+    <h1 class="text-3xl font-semibold">Phần mềm Quản lý Cơ sở Vật chất trường THPT Chuyên Lào Cai (dữ liệu demo)</h1>
+
+    <!-- Thống kê nhanh -->
+    <div class="grid grid-cols-4 gap-1 my-1">
+      <div class="my-card p-1">
+        <h1 class="text-2xl font-medium">45</h1>
+        <p>Phòng học (C, D, E)</p>
+      </div>
+      <div class="my-card p-1">
+        <h1 class="text-2xl font-medium">38</h1>
+        <p>Nhân viên</p>
+      </div>
+      <div class="my-card p-1">
+        <h1 class="text-2xl font-medium">500+</h1>
+        <p>Thiết bị</p>
+      </div>
+      <div class="my-card p-1">
+        <h1 class="text-2xl font-medium">12</h1>
+        <p>Yêu cầu bảo trì</p>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-semibold my-1">Lịch sử gần đây</h2>
+
+    <div class="my-container p-1 my-1">
+      <div id="device-table">Chưa có dữ liệu...</div>
+      <a class="my-button" href="lichsu.php">Xem toàn bộ lịch sử</a>
+    </div>
+
+    <h1 class="text-3xl font-semibold">Giới thiệu phần mềm</h1>
+
+    <div class="grid grid-cols-2 gap-1 my-1">
+
+      <div class="my-container p-1">
+        <h1 class="text-2xl font-semibold center">Tìm phòng</h1>
+        <img src="assets/img/locthietbiphong.png">
+        <p class="font-semibold center">🧭 Mục đích chính của chức năng “Tìm phòng”:</p>
+        <ul>
+          <li>
+            Hỗ trợ tìm kiếm nhanh các phòng có thiết bị theo nhiều tiêu chí như mã phòng, tên phòng, tầng, dãy nhà, tình
+            trạng thiết bị...</li>
+          <li>Phục vụ công tác quản lý tài sản, thiết bị trong trường học hoặc cơ sở giáo dục một cách hiệu quả.</li>
+          <li>Tiết kiệm thời gian cho giáo viên, nhân viên quản lý khi cần kiểm tra tình trạng thiết bị tại từng địa điểm
+            cụ thể.</li>
+        </ul>
+      </div>
+
+      <div class="my-container p-1">
+        <h1 class="text-2xl font-semibold center">Phân công quản lý</h1>
+        <img src="assets/img/phancong.png">
+        <ul>
+          <li>
+            Dễ dàng phân công nhân viên phụ trách thiết bị theo từng phòng hoặc khu vực.</li>
+          <li>Giúp xác định rõ trách nhiệm quản lý, bảo trì và cập nhật thông tin thiết bị.</li>
+          <li>Hỗ trợ theo dõi hiệu quả công việc của từng nhân viên phụ trách.</li>
+        </ul>
+      </div>
+
+      <div class="my-container p-1">
+        <h1 class="text-2xl font-semibold center">Phân quyền</h1>
+        <img src="assets/img/phancong.png">
+        <ul>
+          <li>
+            Hệ thống cho phép phân quyền truy cập theo vai trò: quản trị viên, giáo viên, nhân viên kỹ thuật...</li>
+          <li>Giáo viên chỉ được xem thiết bị do mình phụ trách, đảm bảo tính bảo mật và phân cấp rõ ràng.</li>
+          <li>Quản trị viên có toàn quyền quản lý, chỉnh sửa và phân công thiết bị trong toàn hệ thống.</li>
+        </ul>
+      </div>
+
+      <div class="my-container p-1">
+        <h1 class="text-2xl font-semibold center">Thống kê & Báo cáo</h1>
+        <img src="assets/img/thongke.png">
+        <ul>
+          <li>
+            Xuất báo cáo thiết bị theo phòng, theo tình trạng, theo thời gian mua hoặc bảo trì.(xuất excell hoặc in báo cáo)</li>
+          <li>Hỗ trợ thống kê số lượng thiết bị, tình trạng sử dụng, thiết bị cần thay thế hoặc sửa chữa.</li>
+          <li>Giúp lãnh đạo nhà trường có cái nhìn tổng quan để ra quyết định đầu tư, bảo trì hợp lý.</li>
+        </ul>
+      </div>
+
+      <div class="my-container p-1">
+        <h1 class="text-2xl font-semibold center">QRCODE</h1>
+        <img src="assets/img/qrcode.png">
+        <ul>
+          <li>
+            ✅ Gắn mã QR cho từng thiết bị hoặc cho 1 phòng để dễ dàng nhận diện, tra cứu và quản lý</li>
+          <li>✅ Hỗ trợ kiểm kê nhanh bằng cách quét mã QR qua điện thoại hoặc máy quét</li>
+          <li>✅ Giảm sai sót khi nhập liệu thủ công, tăng độ chính xác trong quản lý</li>
+        </ul>
+      </div>
+
+      <div class="my-container p-1">
+        <h1 class="text-2xl font-semibold center">Điều chuyển, báo hỏng & bảo trì...</h1>
+        <img src="assets/img/dieuchuyen.png">
+        <ul>
+          <li>
+            ✅ Linh hoạt điều chuyển các thiết bị giữa các phòng, kho</li>
+          <li>✅ Báo bảo trì giúp bộ phận quản lý CSVC nhanh chóng sửa chữa thay thế</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="my-container p-1 my-1 center">
+      <p>Và nhiều tính năng khác</p>
+    </div>
+
+  </div>
+
+  <footer class="p-1 md:p-1.5">
+    <h1 class="text-xl font-semibold">Phần mềm Quản lý Cơ sở Vật chất</h1>
+    <p>Đây là đề tài nghiên cứu khoa học của học sinh trường THPT Chuyên Lào Cai, thực hiện với mục tiêu hỗ trợ công
+      tác quản lý thiết bị, phòng học và tài sản trong nhà trường một cách hiệu quả, hiện đại và dễ sử dụng.</p>
+    <p>Mọi ý kiến đóng góp xin gửi về Ban Công nghệ thông tin – THPT Chuyên Lào Cai.</p>
+    <p>© 2025 – Nhóm nghiên cứu học sinh Chuyên Lào Cai</p>
+  </footer>
+
+</body>
+
+</html>

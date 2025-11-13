@@ -1,162 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/* Light Mode */
+@import url(navbar.css);
+@import url(table.css);
+
 :root {
-    color-scheme: light;
-    --accent: #3399FF;
-    --accent-secondary: hsl(230, 56%, 80%);
+    --blur: .5rem;
+    --blur-e: .25rem;
+    --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 
-    --text: hsl(0, 0%, 5%);
-    --text-disabled: hsl(0, 0%, 50%);
-
-    --bg-dark: #B3DCFF;
-    --bg: #E5F3FF;
-    --bg-light: #FAFDFF;
-    --nav: rgb(179, 220, 255, 0.65);
-    --border: #99C2E6;
-
-    --blur: 0.5rem;
-    --blur-edge: 0.25rem;
-}
-
-/* Dark Mode */
-[data-color-scheme="dark"] {
-    color-scheme: dark;
-
-    --accent-secondary: hsl(230, 56%, 20%);
-
-    --text: hsl(0, 0%, 95%);
-
-    --bg-dark: #0D1722;
-    --bg: #15222E;
-    --bg-light: #223344;
-    --nav: rgb(10, 18, 26, 0.65);
-    --border: #060B10;
+    --background: hsl(220, 100%, 98%);
+    --foreground: hsl(240, 50%, 24%);
+    --card: hsl(0, 0%, 100%);
+    --primary: hsl(210, 100%, 50%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(0, 0%, 100%);
+    --secondary-foreground: hsl(240, 50%, 24%);
+    --muted: hsl(220, 100%, 92%);
+    --muted-foreground: hsl(210, 100%, 50%);
+    --accent: hsl(210, 100%, 50%);
+    --destructive: hsl(0 80% 60%);
+    --destructive-foreground: hsl(0, 0%, 100%);
+    --border: hsl(220, 100%, 86%);
+    --ring: hsl(220 90% 64%);
 }
 
 body {
-    font-family: 'Space Grotesk';
-    background-color: var(--bg);
-    transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.glass-backdrop {
-    position: absolute;
-    inset: 0;
-    -webkit-backdrop-filter: blur(var(--blur)) brightness(105%);
-    backdrop-filter: blur(var(--blur)) brightness(105%);
-    background: linear-gradient(to bottom, var(--bg), transparent 50%);
-    pointer-events: none;
-
-    height: 200%;
-    -webkit-mask-image: linear-gradient(to bottom,
-            black 0% 50%,
-            transparent 50% 100%);
-    mask-image: linear-gradient(to bottom,
-            black 0% 50%,
-            transparent 50% 100%);
-}
-
-.glass-edge {
-    position: absolute;
-    height: 2px;
-    -webkit-backdrop-filter: blur(var(--blur-edge)) brightness(95%);
-    backdrop-filter: blur(var(--blur-edge)) brightness(95%);
-    transform: translateY(100%);
-    pointer-events: none;
-
-    height: 100%;
-    inset: 0;
-    -webkit-mask-image: linear-gradient(to bottom,
-            black 0,
-            black 2px,
-            transparent 2px);
-    mask-image: linear-gradient(to bottom,
-            black 0,
-            black 2px,
-            transparent 2px);
-}
-
-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-nav a {
-    color: var(--text);
-    border: none;
-    position: relative;
-    transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-nav a:hover {
-    transform: scale(1.1);
-    color: var(--text);
-    border: none;
-    transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    font-family: 'Inter';
+    background-color: var(--background);
+    color: var(--foreground);
 }
 
 .my-container {
-    background-color: var(--bg-light);
-    border-radius: 2rem;
-}
-
-.my-preview {
-    background-color: var(--bg-dark);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 1rem;
+    box-shadow: var(--box-shadow);
 }
 
-.my-preview .preview-container {
-    background-color: var(--bg-light);
+.table-container {
+    border-radius: 1rem 1rem calc(0.5rem + 1px) calc(0.5rem + 1px);
+}
+
+.my-card {
+    background-color: var(--card);
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
 }
 
 a {
     color: var(--accent);
     text-decoration: none;
     display: inline-block;
-    margin: 0;
+    transition: transform var(--transition),
+        color var(--transition), filter var(--transition);
 }
 
-a:after {
-    display: block;
-    content: '';
-    border-bottom: 1px solid var(--accent);
-    transform: scaleX(0);
-    transition: transform 0.25s ease-in-out;
+.button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: color var(--transition), filter var(--transition), transform var(--transition);
+    box-shadow: var(--box-shadow);
 }
 
-a:hover:after {
-    transform: scaleX(1);
+a:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.button:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+a:active,
+.button:active {
+    transform: scale(0.95);
 }
 
 button {
-    background-color: var(--bg-dark);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
     padding: 0.5rem 1rem;
-    border-radius: 4rem;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 0.5rem;
+    transition: color var(--transition), filter var(--transition), transform var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    border: 1px solid var(--border);
+}
+
+.destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
 }
 
 button:hover {
+    filter: brightness(1.2);
     transform: scale(1.05);
 }
 
 button:active {
-    transform: scale(0.9);
-    /*box-shadow: 0 0 0 2px var(--accent);*/
+    transform: scale(0.95);
 }
 
-input {
+input, select {
+    background-color: var(--secondary);
     border: 1px solid var(--border);
-    border-radius: 4rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    padding: 0.25rem 0.75rem;
+    outline: none;
+    transition: border var(--transition), box-shadow var(--transition);
+}
+
+input:focus, select:focus {
+    border-color: var(--ring);
+    box-shadow: 0 0 1px 1px var(--ring);
 }
 
 footer {
-    background-color: var(--bg-dark);
-    border-top: 1px solid var(--text);
+    background-color: var(--secondary);
+    border-top: 1px solid var(--border);
 }
