@@ -1,6 +1,12 @@
 <?php
 require_once "assets/php/config.php";
-
+session_start();
+if (!isset($_SESSION['quyen']) || !isset($_SESSION['ho_ten'])) {
+    // Chưa đăng nhập
+    header("Location: login.php");
+    exit;
+}
+include 'baomat.php';
 // ========== AJAX update gán nhân viên quản lý phòng ==========
 if (isset($_POST['action']) && $_POST['action'] === "assignRoom") {
   $idNhanVien = intval($_POST['id_nhanvien']);
@@ -67,24 +73,21 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
 <html lang="vi">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Danh sách Nhân viên</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
 
 <body>
-  
-  <?php include 'assets/components/navbar.php'?>
+  <header id="menu"></header>
 
-  <div class="p-1">
-    <h1 class="text-3xl font-semibold">Quản lý nhân viên</h1>
+  <div class="p-1 md:p-2">
+    <h1 class="text-3xl font-semibold mb-1">Quản lý nhân viên</h1>
 
-    <div class="my-container table-container my-1">
-      <div class="p-1">
-      <h2 class="text-2xl font-medium">Nhân viên đã phân công</h2>
-      </div>
+    <section class="my-container table-container my-1">
+      <h2 class="text-2xl font-medium p-1">Nhân viên đã phân công</h2>
       <table id="table-assigned">
         <thead>
           <tr>
@@ -99,12 +102,10 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
         </thead>
         <tbody></tbody>
       </table>
-    </div>
+    </section>
 
-    <div class="my-container table-container my-1">
-      <div class="p-1">
-      <h2 class="text-2xl font-medium">Nhân viên chưa phân công</h2>
-      </div>
+    <section class="my-container table-container my-1">
+      <h2 class="text-2xl font-medium p-1">Nhân viên chưa phân công</h2>
       <table id="table-unassigned">
         <thead>
           <tr>
@@ -118,7 +119,7 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
         </thead>
         <tbody></tbody>
       </table>
-    </div>
+    </section>
   </div>
 
   <script>
@@ -204,6 +205,7 @@ if (isset($_GET['action']) && $_GET['action'] === "getData") {
 
     fetchData();
   </script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

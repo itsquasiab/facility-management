@@ -1,0 +1,127 @@
+.custom-checkbox,
+.custom-radio {
+    display: block;
+    position: relative;
+    padding-left: 2.25rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.custom-checkbox input,
+.custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border-radius: 0.5rem;
+    background-color: var(--input);
+    border: 1px solid var(--border);
+    transition: background-color var(--transition), transform var(--transition),
+        border var(--transition), box-shadow var(--transition);
+}
+
+/* On mouse-over, add a grey background color */
+.custom-checkbox:hover input~.checkbox {
+    transform: scale(1.05);
+}
+
+.custom-checkbox:active input~.checkbox {
+    transform: scale(0.95);
+}
+
+/* When the checkbox is checked, add a blue background */
+.custom-checkbox input:checked~.checkbox {
+    background-color: var(--primary);
+    border-color: var(--ring);
+    box-shadow: 0 0 0px 2px var(--ring);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+    transition: display var(--transition);
+}
+
+/* Show the checkmark when checked */
+.custom-checkbox input:checked~.checkbox:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.custom-checkbox .checkbox:after {
+    left: 7px;
+    top: 2px;
+    width: 8px;
+    height: 16px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Create a custom radio button */
+.radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    transition: background-color var(--transition), transform var(--transition),
+        border var(--transition), box-shadow var(--transition);
+}
+
+/* On mouse-over, add a grey background color */
+.custom-radio:hover input~.radio {
+    transform: scale(1.05);
+}
+
+.custom-radio:active input~.radio {
+    transform: scale(0.95);
+}
+
+/* When the radio button is checked, add a blue background */
+.custom-radio input:checked~.radio {
+    background-color: var(--primary);
+    border-color: var(--ring);
+    box-shadow: 0 0 0px 2px var(--ring);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio:after {
+    content: "";
+    position: absolute;
+    display: none;
+    transition: display var(--transition);
+}
+
+/* Show the indicator (dot/circle) when checked */
+.custom-radio input:checked~.radio:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.custom-radio .radio:after {
+    top: 6px;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+}

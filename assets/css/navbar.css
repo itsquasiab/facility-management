@@ -1,59 +1,38 @@
 /* Navbar */
-:root{
-    --navbar: hsla(210, 100%, 50%, 50%);
-    --navbar-secondary: hsl(210, 100%, 50%);
+:root {
+    --navbar: hsl(220 90% 66%);
     --navbar-foreground: hsl(0, 0%, 100%);
 }
 
+.settings-icon {
+    content: url("../icons/settings_dark.svg");
+}
+
+.menu-icon {
+    content: url("../icons/menu_dark.svg");
+}
+
+.visibility_icon {
+    content: url("../icons/visibility_light.svg");
+}
+
 header {
-    background-color: var(--navbar-secondary);
+    background-color: var(--navbar);
+    box-shadow: var(--box-shadow);
     position: sticky;
     top: 0;
     width: 100%;
     padding: 1rem 0;
-    z-index: 1;
+    z-index: 2;
 }
 
-/*.navbar-glass {
-    position: absolute;
-    inset: 0;
-    -webkit-backdrop-filter: blur(var(--blur)) brightness(100%);
-    backdrop-filter: blur(var(--blur)) brightness(100%);
-    background: linear-gradient(to bottom, var(--background), transparent 50%);
-    pointer-events: none;
-
-    height: 200%;
-    -webkit-mask-image: linear-gradient(to bottom,
-            black 0% 50%,
-            transparent 50% 100%);
-    mask-image: linear-gradient(to bottom,
-            black 0% 50%,
-            transparent 50% 100%);
+#nav-content {
+    width: 100%;
 }
-
-.navbar-glass-edge {
-    position: absolute;
-    height: 4px;
-    -webkit-backdrop-filter: blur(var(--blur-e)) brightness(100%);
-    backdrop-filter: blur(var(--blur-e)) brightness(100%);
-    transform: translateY(100%);
-    pointer-events: none;
-
-    height: 100%;
-    inset: 0;
-    -webkit-mask-image: linear-gradient(to bottom,
-            black 0,
-            black 2px,
-            transparent 2px);
-    mask-image: linear-gradient(to bottom,
-            black 0,
-            black 2px,
-            transparent 2px);
-}*/
 
 nav a,
 nav button {
-    background-color: transparent;
+    background-color: var(--navbar);
     color: var(--navbar-foreground);
     position: relative;
     transition: color var(--transition), filter var(--transition), transform var(--transition);
@@ -64,27 +43,101 @@ nav button {
 
 nav a:hover,
 nav button:hover {
-    color: var(--navbar-foreground);
-    transform: scale(1.05);
-}
-
-nav a.btn,
-nav button.btn {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-    position: relative;
-    padding: 0.25rem 1rem;
-}
-
-nav a.btn:hover,
-nav button.btn:hover {
     filter: brightness(1.2);
-    transform: translateY(-2px);
     transform: scale(1.05);
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+nav .nav-dropdown {
+    position: relative;
+}
+
+nav .nav-dropdown-content {
+    background-color: var(--navbar);
+    box-shadow: var(--box-shadow);
+    display: none;
+    position: absolute;
+    z-index: 2;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+nav .nav-dropdown-content a {
+    background-color: var(--navbar);
+    color: var(--navbar-foreground);
+    transition: color var(--transition), filter var(--transition), transform var(--transition);
+    display: block;
+}
+
+nav .nav-dropdown-content a:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+nav .nav-dropdown:hover .nav-dropdown-content {
+    display: block;
+}
+
+/* open by click for mobile */
+@media (max-width: 1023px) {
+    #nav-content {
+        background-color: var(--navbar);
+        box-shadow: var(--box-shadow);
+
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+        position: absolute;
+        top: 5rem;
+        left: 1rem;
+        border-radius: 1rem;
+        width: calc(100% - 2rem);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        z-index: 10;
+        transition:
+            opacity var(--transition),
+            visibility var(--transition),
+            transform var(--transition),
+            backdrop-filter var(--transition);
+    }
+
+    #nav-content.responsive {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    #nav-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-dropdown>button {
+        width: 100%;
+        text-align: left;
+    }
+
+    #nav-content a,
+    #nav-content button {
+        padding: 0.5rem 1rem;
+    }
+
+    #nav-content a:hover,
+    #nav-content button:hover {
+        transform: scale(1);
+        filter: brightness(1.2);
+    }
+
+    .menu-icon {
+        display: block;
+    }
 }

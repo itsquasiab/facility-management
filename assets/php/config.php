@@ -1,9 +1,8 @@
 <?php
-// ===== KẾT NỐI CSDL =====
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "quanlycsvc"; // đổi tên theo CSDL của bạn
+$db   = "quanlycsvc";
 
 $conn = new mysqli($host, $user, $pass, $db);
 $conn->set_charset("utf8");

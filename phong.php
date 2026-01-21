@@ -1,6 +1,12 @@
 <?php
 require_once "assets/php/config.php";
-
+session_start();
+if (!isset($_SESSION['quyen']) || !isset($_SESSION['ho_ten'])) {
+  // Chưa đăng nhập
+  header("Location: login.php");
+  exit;
+}
+include 'baomat.php';
 // ====== XỬ LÝ AJAX ======
 
 // Lấy dữ liệu phòng có thiết bị
@@ -76,53 +82,23 @@ while ($row = $res->fetch_assoc()) $nhanvienOptions[] = $row;
 <html lang="vi">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Danh sách Phòng</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
 
 <body>
+  <header id="menu"></header>
 
-  <?php include 'assets/components/navbar.php'?>
+  <div class="p-1 md:p-2">
+    <h1 class="text-3xl font-semibold mb-1">Danh sách các phòng (có thiết bị)</h1>
 
-  <div class="p-1">
-    <h1 class="text-3xl font-semibold">Danh sách các phòng (có thiết bị)</h1>
+    <?php include 'assets/php/filter_phong.php' ?>
 
-    <section class="my-container p-1 my-1">
-      <h2 class="text-2xl font-medium">Bộ lọc</h2>
-      <label>Tên phòng:
-        <input id="filter-ten-phong" placeholder="VD: 10 Tin, STEM,..." type="text" />
-      </label>
-
-      <label>Mã phòng:
-        <input id="filter-ma-phong" placeholder="VD: C301, D102,..." type="text" />
-      </label>
-
-      <label>Dãy nhà:
-        <select id="filter-day-nha">
-          <option value="">-- Tất cả --</option>
-          <?php foreach ($dayOptions as $opt): ?>
-            <option value="<?= htmlspecialchars($opt) ?>"><?= htmlspecialchars($opt) ?></option>
-          <?php endforeach; ?>
-        </select>
-      </label>
-
-      <label>Tầng:
-        <select id="filter-tang">
-          <option value="">-- Tất cả --</option>
-          <?php foreach ($tangOptions as $opt): ?>
-            <option value="<?= htmlspecialchars($opt) ?>"><?= htmlspecialchars($opt) ?></option>
-          <?php endforeach; ?>
-        </select>
-      </label>
-    </section>
-
-    <div class="my-container table-container">
-      <div class="p-1">
-      <p id="count-phong" class="text-lg font-medium">Đang hiển thị: 0 phòng</p>
-      </div>
+    <div class="my-container table-container my-1">
+      <p id="count-phong" class="text-lg font-medium p-1">Đang hiển thị: 0 phòng</p>
       <table id="table-phong">
         <thead>
           <tr>
@@ -221,5 +197,7 @@ while ($row = $res->fetch_assoc()) $nhanvienOptions[] = $row;
 
     fetchData(); // load ban đầu
   </script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>

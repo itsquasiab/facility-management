@@ -1,7 +1,9 @@
 /* Table */
-:root{
-    --table: hsl(0, 0%, 100%);
-    --table-secondary: hsl(220, 100%, 98%);
+:root {
+  --table: hsl(0, 0%, 100%);
+  --table-secondary: hsl(220, 100%, 98%);
+  --table-head: hsl(220, 100%, 96%);
+  --table-border: hsl(220 100% 94%);
 }
 
 table {
@@ -11,19 +13,29 @@ table {
 }
 
 thead tr {
-  background-color: var(--muted);
+  background-color: var(--table-head);
   color: var(--muted-foreground);
-  font-weight: 600;
+  font-weight: bold;
   text-align: left;
 }
 
-th, td {
+thead tr.table-edit-form {
+  background-color: var(--table-secondary);
+  color: var(--foreground);
+}
+
+thead tr.table-edit-form th {
+  font-weight: normal;
+}
+
+th,
+td {
   border-bottom: 1px solid var(--border);
   border-right: 1px solid var(--border);
   padding: 0.5rem;
 }
 
-table tr td:first-child, 
+table tr td:first-child,
 table tr th:first-child {
   border-left: 1px solid var(--border);
 }
@@ -49,9 +61,9 @@ table tr:last-child td:last-child {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: var(--table);
+  background-color: var(--table);
 }
 
 tbody tr:nth-child(even) {
-    background-color: var(--table-secondary);
+  background-color: var(--table-secondary);
 }

@@ -2,44 +2,86 @@
 
 @import url(navbar.css);
 @import url(table.css);
+@import url(checkbox_radio.css);
 
 :root {
-    --blur: .5rem;
-    --blur-e: .25rem;
-    --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    --blur: blur(0.5rem);
+    --box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.1);
     --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 
-    --background: hsl(220, 100%, 98%);
-    --foreground: hsl(240, 50%, 24%);
-    --card: hsl(0, 0%, 100%);
-    --primary: hsl(210, 100%, 50%);
-    --primary-foreground: hsl(0, 0%, 100%);
-    --secondary: hsl(0, 0%, 100%);
-    --secondary-foreground: hsl(240, 50%, 24%);
-    --muted: hsl(220, 100%, 92%);
-    --muted-foreground: hsl(210, 100%, 50%);
-    --accent: hsl(210, 100%, 50%);
-    --destructive: hsl(0 80% 60%);
-    --destructive-foreground: hsl(0, 0%, 100%);
-    --border: hsl(220, 100%, 86%);
-    --ring: hsl(220 90% 64%);
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(220 47% 34%);
+    --card: hsl(0 0% 100%);
+    --primary: hsl(220 90% 66%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(220 100% 97%);
+    --secondary-foreground: hsl(245 58% 51%);
+    --muted: hsl(220 100% 98%);
+    --muted-foreground: hsl(220 83% 58%);
+    --accent: hsl(220 95% 93%);
+    --accent-foreground: hsl(220 71% 40%);
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 100%);
+    --border: hsl(220 100% 94%);
+    --input: hsl(0 0% 100%);
+    --ring: hsl(220 90% 66%);
+
+    --img: url(../../img/chuyen_lao_cai.jpg);
+    --glass: hsla(0, 0%, 100%, 40%);
+    --glass-border: hsla(0, 0%, 100%, 60%);
 }
 
 body {
-    font-family: 'Inter';
+    font-family: "Inter";
     background-color: var(--background);
     color: var(--foreground);
 }
 
-.my-container {
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 1rem;
+.image-background {
+    background-image: var(--img);
+    background-size: cover;
+    /* Makes the image cover the entire area */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+    background-position: center;
+    /* Centers the image */
+    background-attachment: fixed;
+    /* Optional: makes background stay fixed on scroll */
+    height: 100vh;
+    /* Makes sure it covers full viewport height */
+    width: 100%;
+    /* Covers full width */
+}
+
+.glass {
+    background-color: var(--glass);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
     box-shadow: var(--box-shadow);
 }
 
-.table-container {
-    border-radius: 1rem 1rem calc(0.5rem + 1px) calc(0.5rem + 1px);
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--card);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    max-height: 90%;
+    overflow-y: auto;
 }
 
 .my-card {
@@ -49,8 +91,32 @@ body {
     box-shadow: var(--box-shadow);
 }
 
+.my-card h2 {
+    color: var(--primary);
+}
+
+.my-container {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    overflow: auto;
+}
+
+.table-container {
+    border-radius: 1rem 1rem calc(0.5rem + 1px) calc(0.5rem + 1px);
+}
+
+.error-banner {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+    border: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
 a {
-    color: var(--accent);
+    color: var(--primary);
     text-decoration: none;
     display: inline-block;
     transition: transform var(--transition),
@@ -60,6 +126,7 @@ a {
 .button {
     background-color: var(--primary);
     color: var(--primary-foreground);
+    text-align: center;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     transition: color var(--transition), filter var(--transition), transform var(--transition);
@@ -110,8 +177,10 @@ button:active {
     transform: scale(0.95);
 }
 
-input, select {
-    background-color: var(--secondary);
+input,
+select,
+textarea {
+    background-color: var(--input);
     border: 1px solid var(--border);
     border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
@@ -120,12 +189,17 @@ input, select {
     transition: border var(--transition), box-shadow var(--transition);
 }
 
-input:focus, select:focus {
-    border-color: var(--ring);
-    box-shadow: 0 0 1px 1px var(--ring);
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--ring);
 }
 
 footer {
     background-color: var(--secondary);
     border-top: 1px solid var(--border);
 }
+
+@media screen and (max-width: 767px) {}
